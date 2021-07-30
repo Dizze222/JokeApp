@@ -8,7 +8,7 @@ class JokeApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        viewModel = ViewModel(TestModel())
+        viewModel = ViewModel(TestModel(BaseResourceManager(this)))
     }
 
 }

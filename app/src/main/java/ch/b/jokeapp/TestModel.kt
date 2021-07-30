@@ -3,32 +3,33 @@ package ch.b.jokeapp
 import ch.b.jokeapp.Model.Model
 import ch.b.jokeapp.Model.ResultCallback
 
-class TestModel : Model<Any, Any> {
-    private var callback: ResultCallback<Any, Any>? = null
-
+class TestModel(resourceManager: ResourceManager) : Model {
+    private var callback: ResultCallback? = null
+    private val noConnection = NoConnection(resourceManager)
+    private val servieUnavalide = ServiceUnavailable(resourceManager)
     private var count = 0
 
 
     override fun getJoke() {
         Thread {
             Thread.sleep(1000)
-            if (count % 2 == 0) {
-                callback?.provideSuccess("success")
-            } else {
-                callback?.provideError("error")
+            when(count){
+                0 -> callback?.provideSuccess(Joke("testText","testPunchline"))
+                1 -> callback?.provideError(noConnection)
+                2 -> callback?.provideError(servieUnavalide)
             }
             count++
+            if(count == 3) count = 0
         }.start()
 
     }
 
-
-
-    override fun init(callback: ResultCallback<Any, Any>) {
+    override fun init(callback: ResultCallback) {
         this.callback = callback
     }
 
     override fun clear() {
         callback = null
     }
+
 }

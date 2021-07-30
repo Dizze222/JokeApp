@@ -1,16 +1,21 @@
 package ch.b.jokeapp.Model
 
+import ch.b.jokeapp.Joke
+import ch.b.jokeapp.JokeFailure
 
-interface Model<S,E>{
+
+interface Model{
     fun getJoke()
 
-    fun init(callback: ResultCallback<S,E>)
+    fun init(callback: ResultCallback)
 
     fun clear()
 }
-interface ResultCallback<S,E>{
-    fun provideSuccess(data: S)
 
-    fun provideError(error: E)
+
+interface ResultCallback{
+    fun provideSuccess(data: Joke)
+
+    fun provideError(error: JokeFailure)
 
 }

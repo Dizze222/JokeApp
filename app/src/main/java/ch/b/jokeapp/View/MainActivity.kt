@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
             progressBar.visibility = View.VISIBLE
             viewModel.getJoke()
         }
+
         viewModel.init(object : TextCallback {
             override fun provideText(text: String) = runOnUiThread {
                 button.isEnabled = true
@@ -34,7 +35,6 @@ class MainActivity : AppCompatActivity() {
                 textView.text = text
             }
         })
-
     }
 
     override fun onDestroy() {
