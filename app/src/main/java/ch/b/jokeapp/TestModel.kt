@@ -1,13 +1,18 @@
 package ch.b.jokeapp
 
+import android.app.Application
+import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import ch.b.jokeapp.Model.Model
 import ch.b.jokeapp.Model.ResultCallback
 
-class TestModel(resourceManager: ResourceManager) : Model {
+class TestModel(resourceManager: ResourceManager, application: Application) : Model,AndroidViewModel(application) {
     private var callback: ResultCallback? = null
     private val noConnection = NoConnection(resourceManager)
     private val servieUnavalide = ServiceUnavailable(resourceManager)
+    private val toastt = customToast(application)
     private var count = 0
+    private var countTest = 0
 
 
     override fun getJoke() {
@@ -20,6 +25,7 @@ class TestModel(resourceManager: ResourceManager) : Model {
             }
             count++
             if(count == 3) count = 0
+
         }.start()
 
     }
@@ -30,6 +36,14 @@ class TestModel(resourceManager: ResourceManager) : Model {
 
     override fun clear() {
         callback = null
+    }
+
+    override fun testFunction() {
+        countTest++
+        when(countTest){
+            2 -> callback?.returnToast(toastt)
+        }
+        Log.i("TAG",countTest.toString())
     }
 
 }

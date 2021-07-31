@@ -1,6 +1,7 @@
 package ch.b.jokeapp
 
 import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import ch.b.jokeapp.ViewModel.ViewModel
 
 class JokeApp : Application() {
@@ -8,7 +9,10 @@ class JokeApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        viewModel = ViewModel(TestModel(BaseResourceManager(this)))
+        //viewModel = ViewModel(TestModel(BaseResourceManager(this)))
+        viewModel = ViewModel(TestModel(BaseResourceManager(this),this))
+
     }
+
 
 }
