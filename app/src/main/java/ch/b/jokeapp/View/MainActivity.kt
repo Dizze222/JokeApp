@@ -2,16 +2,14 @@ package ch.b.jokeapp.View
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
 import ch.b.jokeapp.JokeApp
 import ch.b.jokeapp.R
-import ch.b.jokeapp.ViewModel.TextCallback
 import ch.b.jokeapp.ViewModel.ViewModel
+import ch.b.jokeapp.network.TextCallback
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: ViewModel

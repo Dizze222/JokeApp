@@ -1,7 +1,6 @@
 package ch.b.jokeapp
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import ch.b.jokeapp.Model.Model
 import ch.b.jokeapp.Model.ResultCallback

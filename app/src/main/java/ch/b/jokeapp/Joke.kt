@@ -1,10 +1,7 @@
 package ch.b.jokeapp
 
-import android.app.Application
 import android.content.Context
-import android.widget.Toast
 import androidx.annotation.StringRes
-import androidx.lifecycle.AndroidViewModel
 
 class Joke(private val text: String, private val punchLine: String) {
 
@@ -26,9 +23,12 @@ class Joke(private val text: String, private val punchLine: String) {
 
     }
 
+
     interface ResourceManager {
         fun getString(@StringRes stringResId: Int): String
     }
+
+
     class BaseResourceManager(private val context: Context) : ResourceManager{
         override fun getString(stringResId: Int): String = context.getString(stringResId)
 

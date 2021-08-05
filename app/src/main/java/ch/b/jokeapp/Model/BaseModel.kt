@@ -1,10 +1,8 @@
 package ch.b.jokeapp.Model
 
 import ch.b.jokeapp.*
-import ch.b.jokeapp.network.ErrorType
 import ch.b.jokeapp.network.JokeDTO
 import ch.b.jokeapp.network.JokeService
-import ch.b.jokeapp.network.ServiceCallback
 import retrofit2.Call
 import retrofit2.Response
 import java.net.UnknownHostException

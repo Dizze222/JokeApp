@@ -4,6 +4,7 @@ import ch.b.jokeapp.Joke
 import ch.b.jokeapp.JokeFailure
 import ch.b.jokeapp.Model.Model
 import ch.b.jokeapp.Model.ResultCallback
+import ch.b.jokeapp.network.TextCallback
 
 class ViewModel(private val model: Model)  {
     private var callback: TextCallback? = null
@@ -27,6 +28,3 @@ class ViewModel(private val model: Model)  {
 
 }
 
-interface TextCallback {
-    fun provideText(text: String)
-}
