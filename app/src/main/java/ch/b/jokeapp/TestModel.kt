@@ -10,10 +10,7 @@ class TestModel(resourceManager: ResourceManager, application: Application) : Mo
     private var callback: ResultCallback? = null
     private val noConnection = NoConnection(resourceManager)
     private val servieUnavalide = ServiceUnavailable(resourceManager)
-    private val toastt = customToast(application)
     private var count = 0
-    private var countTest = 0
-
 
     override fun getJoke() {
         Thread {
@@ -38,12 +35,6 @@ class TestModel(resourceManager: ResourceManager, application: Application) : Mo
         callback = null
     }
 
-    override fun testFunction() {
-        countTest++
-        when(countTest){
-            2 -> callback?.returnToast(toastt)
-        }
-        Log.i("TAG",countTest.toString())
-    }
+
 
 }

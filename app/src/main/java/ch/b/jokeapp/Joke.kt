@@ -15,9 +15,6 @@ class Joke(private val text: String, private val punchLine: String) {
         fun getMessage(): String
 
     }
-
-
-
     class NoConnection(private val resourceManager: ResourceManager) : JokeFailure {
         override fun getMessage(): String = resourceManager.getString(R.string.no_connection)
 
@@ -27,10 +24,6 @@ class Joke(private val text: String, private val punchLine: String) {
     class ServiceUnavailable(private val resourceManager: ResourceManager) : JokeFailure {
         override fun getMessage(): String = resourceManager.getString(R.string.service_unavailable)
 
-    }
-
-    class customToast(application: Application) : AndroidViewModel(application) {
-        fun toast() = Toast.makeText(getApplication(),"YRA",Toast.LENGTH_SHORT).show()
     }
 
     interface ResourceManager {

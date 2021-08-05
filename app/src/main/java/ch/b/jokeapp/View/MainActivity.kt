@@ -18,10 +18,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var count = 0
         viewModel = (application as JokeApp).viewModel
         val button = findViewById<Button>(R.id.button)
-        val buttonTest = findViewById<Button>(R.id.buttonTest)
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
         val textView = findViewById<TextView>(R.id.textView)
         progressBar.visibility = View.INVISIBLE
@@ -31,9 +29,7 @@ class MainActivity : AppCompatActivity() {
             progressBar.visibility = View.VISIBLE
             viewModel.getJoke()
         }
-        buttonTest.setOnClickListener {
-            viewModel.testFun()
-        }
+
 
 
         viewModel.init(object : TextCallback {
