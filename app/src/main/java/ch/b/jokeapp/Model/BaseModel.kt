@@ -7,12 +7,17 @@ import retrofit2.Call
 import retrofit2.Response
 import java.net.UnknownHostException
 
-class BaseModel(private val service: JokeService, private val resourceManager: ResourceManager) :
-    Model {
+class BaseModel(private val service: JokeService, private val resourceManager: ResourceManager) : Model {
 
     private var callback: ResultCallback? = null
-    private val noConnection by lazy { NoConnection(resourceManager) }
-    private val serviceUnavailable by lazy { ServiceUnavailable(resourceManager) }
+
+    private val noConnection by lazy {
+        NoConnection(resourceManager)
+    }
+
+    private val serviceUnavailable by lazy {
+        ServiceUnavailable(resourceManager)
+    }
 
     override fun getJoke() {
         service.getJoke().enqueue(object : retrofit2.Callback<JokeDTO> {
@@ -25,17 +30,13 @@ class BaseModel(private val service: JokeService, private val resourceManager: R
                }
             }
 
-            override fun onFailure(call: Call<JokeDTO>, t: Throwable) {
-             if(t is UnknownHostException)
+            override fun onFailure(call: Call<JokeDTO>, throwable: Throwable) {
+             if(throwable is UnknownHostException)
                  callback?.provideError(noConnection)
                 else
                     callback?.provideError(serviceUnavailable)
             }
-
-
         })
-
-
     }
 
     override fun init(callback: ResultCallback) {
